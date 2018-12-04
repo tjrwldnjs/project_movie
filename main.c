@@ -22,19 +22,19 @@ int main(int argc, char *argv[]) {
 	int cnt; //integer variable
 	
 	//1. reading the movie.dat-----------------------------
-	//1.1 FILE open
+	fp = fopen("movie information.dat","w"); //1.1 FILE open
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( /* read name, country, runtime and score*/ )
+	while ( /* read name, country, runtime and score*/fgetc(fp) != NULL )
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}
 
-	//1.4 FILE close
+	fclose(fp);	//1.4 FILE close
 	
 	//2. program start
 	while(exit_flag == 0)
@@ -63,15 +63,22 @@ int main(int argc, char *argv[]) {
 				
 			case 3: //print movies with long runtime
 				
-				printf("Input runtime : ");
+				printf("Input runTime : ");
 				scanf("%d\n", &runTime); 
 				printf("----------------------------------------\n");
 				
-				re
+				repFunc = mv_printRunTime;
+				arg = runTime;
 				break;
 				
 			case 4: //print movies with high score
+			
+				printf("Input score : ");
+				scanf("%f\n", &score); 
+				printf("----------------------------------------\n");
 				
+				repFunc = mv_printScore;
+				arg = score;
 				break;
 				
 			case 5:
@@ -86,7 +93,7 @@ int main(int argc, char *argv[]) {
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		list_repeatFunc(repFunc, )
+		list_repeatFunc(repFunc, arg, list);
 		//2.3 print number of movies
 	}
 	
