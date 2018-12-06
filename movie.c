@@ -34,24 +34,59 @@ void printMv(void* obj)
 	return;
 }
 
+
 int mv_printAll(void* obj, void* arg)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	
+	
+	return ;
 }
 
 int mv_printScore(void* obj, void* arg)
-{
+{	
+	float score;
 	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	if (mvPtr == NULL)
+	{
+		printf("ERROR");
+	}
+	
+	printf("Score : %f\n ", mvPtr->score);
+	
+	return arg;
 }
 
 int mv_printRunTime(void* obj, void* arg)
-{
+{	
+	int runTime;
 	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	if (mvPtr == NULL)
+	{
+		printf("ERROR");
+	}
+	
+	printf("Runtime : %f\n ", mvPtr->runTime);
+	
+	return arg;
 }
 
 int mv_printCountry(void* obj, void* arg)
 {
+	char madeIn[10];
 	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	if (mvPtr == NULL)
+	{
+		printf("ERROR");
+	}
+	
+	printf("Country : %f\n ", mvPtr->madeIn);
+	
+	return arg;
 }
 
 

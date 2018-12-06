@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 	int cnt; //integer variable
 	
 	//1. reading the movie.dat-----------------------------
-	fp = fopen("movie information.dat","w"); //1.1 FILE open
+	fp = fopen("movie.dat","w"); //1.1 FILE open
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
@@ -30,7 +30,8 @@ int main(int argc, char *argv[]) {
 	//1.3 read each movie data from the file and add it to the linked list
 	while ( /* read name, country, runtime and score*/fgetc(fp) != NULL )
 	{	
-		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
+		//generate a movie info instance(mvInfo) with function mv_genMvInfo() //무비인포 불러오기
+		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		list_addTail(mvInfo, list);
 	}
 
@@ -40,6 +41,12 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0)
 	{
 		//2.1 print menu message and get input option
+		printf("----------------MENU----------------");
+		printf("1. Print all movies\n");
+		printf("2. Search for specific country movies\n");
+		printf("3. Search for specific runtime movies\n");
+		printf("4. Search for specific score movies\n");
+		printf("5. Exit\n");
 		
 		switch(option)
 		{
@@ -58,7 +65,7 @@ int main(int argc, char *argv[]) {
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printCountry;
-				arg = country; //문자열로 받은거 
+				arg = &country; //문자열로 받은거 
 				break;
 				
 			case 3: //print movies with long runtime
@@ -68,7 +75,7 @@ int main(int argc, char *argv[]) {
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printRunTime;
-				arg = runTime;
+				arg = &runTime;
 				break;
 				
 			case 4: //print movies with high score
@@ -78,7 +85,7 @@ int main(int argc, char *argv[]) {
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printScore;
-				arg = score;
+				arg = &score;
 				break;
 				
 			case 5:
