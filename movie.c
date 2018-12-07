@@ -37,28 +37,29 @@ void printMv(void* obj)
 
 int mv_printAll(void* obj, void* arg)
 {
+	//printMv를 실행하자 
 	
+	printMv(arg); //이건가? 
 	
-	
-	return ;
+	return 0;
 }
 
 int mv_printScore(void* obj, void* arg)
 {	
 
 	
-	return arg;
+	return 0;
 }
 
 int mv_printRunTime(void* obj, void* arg)
 {	
 
-	return arg;
+	return 0;
 }
 
 int mv_printCountry(void* obj, void* arg)
 {
-	return arg;
+	return 0;
 }
 
 

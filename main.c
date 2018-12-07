@@ -22,25 +22,25 @@ int main(int argc, char *argv[]) {
 	int cnt; //integer variable
 	
 	//1. reading the movie.dat-----------------------------
-	fp = fopen("movie.dat","w"); //1.1 FILE open
+	fp = fopen("movie.dat","r"); //1.1 FILE open
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while  (EOF != fscanf(fp, "%s", name))
+	while  (EOF != fscanf(fp,"%s, %s, %d, %f", &name, &country, &runTime, &score)) //조건문을 알맞게 채우자. 
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo() //무비인포 불러오기
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		list_addTail(mvInfo, list);
 		
-		printf("%s", name);
-		printf("%s", country);
-		printf("%d", runTime);
-		printf("%f", score);
+		printf("%s\n", name);
+		printf("%s\n", country);
+		printf("%d\n", runTime);
+		printf("%f\n", score);
+
 	}
-	printMv(fp);
-	 
+
 	fclose(fp);	//1.4 FILE close
 	
 	//2. program start
