@@ -28,25 +28,34 @@ int main(int argc, char *argv[]) {
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( /* read name, country, runtime and score*/fgetc(fp) != NULL )
+	while  (EOF != fscanf(fp, "%s", name))
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo() //무비인포 불러오기
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		list_addTail(mvInfo, list);
+		
+		printf("%s", name);
+		printf("%s", country);
+		printf("%d", runTime);
+		printf("%f", score);
 	}
-
+	printMv(fp);
+	 
 	fclose(fp);	//1.4 FILE close
 	
 	//2. program start
 	while(exit_flag == 0)
 	{
 		//2.1 print menu message and get input option
-		printf("----------------MENU----------------");
+		printf("----------------MENU----------------\n");
 		printf("1. Print all movies\n");
 		printf("2. Search for specific country movies\n");
 		printf("3. Search for specific runtime movies\n");
 		printf("4. Search for specific score movies\n");
-		printf("5. Exit\n");
+		printf("5. Exit\n\n");
+		
+		printf("Input a number : ");
+		scanf("%d", &option);
 		
 		switch(option)
 		{
@@ -102,6 +111,7 @@ int main(int argc, char *argv[]) {
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
 		list_repeatFunc(repFunc, arg, list);
 		//2.3 print number of movies
+		
 	}
 	
 	return 0;
