@@ -27,18 +27,16 @@ int main(int argc, char *argv[]) {
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
+	printf("Reading the data file\n");
+	
 	//1.3 read each movie data from the file and add it to the linked list
-	while  (EOF != fscanf(fp,"%s, %s, %d, %f", &name, &country, &runTime, &score)) //조건문을 알맞게 채우자. 
+	while  (EOF != fscanf(fp,"%s, %s, %d, %f", &name, &country, &runTime, &score))
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo() //무비인포 불러오기
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		list_addTail(mvInfo, list);
 		
-		printf("%s\n", name);
-		printf("%s\n", country);
-		printf("%d\n", runTime);
-		printf("%f\n", score);
-
+		printf("%s, %s, %d, %f\n", name,country,runTime,score);
 	}
 
 	fclose(fp);	//1.4 FILE close

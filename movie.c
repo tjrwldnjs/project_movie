@@ -15,6 +15,13 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t* mvPtr;
 	
+	/*mvPtr = (movInfo_t*)malloc(sizeof(movInfo_t));
+	
+	mvPtr->name = name;
+	mvPtr->madeIn = country;
+	mvPtr->runTime = runTime;
+	mvPtr->score = score; */
+	
 	//allocate memory and set the member variables
 	
 	return (void*)mvPtr;
@@ -37,7 +44,14 @@ void printMv(void* obj)
 
 int mv_printAll(void* obj, void* arg)
 {
-	//printMv를 실행하자 
+	//printMv를 실행하자
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+
+	arg = mvPtr;
+	mvPtr->name;
+	mvPtr->madeIn;
+	mvPtr->runTime;
+	mvPtr->score; 
 	
 	printMv(arg); //이건가? 
 	
@@ -46,7 +60,12 @@ int mv_printAll(void* obj, void* arg)
 
 int mv_printScore(void* obj, void* arg)
 {	
-
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	
+	arg = mvPtr;
+	mvPtr->score;
+	
+	printf("%f",arg);
 	
 	return 0;
 }
