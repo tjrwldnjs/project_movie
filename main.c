@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 	printf("Reading the data file\n");
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while  (EOF != fscanf(fp,"%s, %s, %d, %f", &name, &country, &runTime, &score))
+	while  (fscanf(fp,"%s %s %d %f", name, country, &runTime, &score) != EOF)
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo() //무비인포 불러오기
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
@@ -38,7 +38,10 @@ int main(int argc, char *argv[]) {
 		
 		printf("%s, %s, %d, %f\n", name,country,runTime,score);
 	}
-
+	
+	printf("Ready done!");
+	printf("%d items are read\n",(list_len(list)));
+	
 	fclose(fp);	//1.4 FILE close
 	
 	//2. program start
