@@ -15,9 +15,9 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t* mvPtr;
 	
-	mvPtr = (movInfo_t*)malloc(sizeof(movInfo_t));
+	mvPtr = (movInfo_t*)malloc(sizeof(movInfo_t)); //메모리를 할당한다. 
 	
-	strcpy(mvPtr->name, name);
+	strcpy(mvPtr->name, name); //문자열을 가리키기 위해 strcpy를 사용한다. 
 	strcpy(mvPtr->madeIn, country);
 	mvPtr->runTime = runTime;
 	mvPtr->score = score;
@@ -53,67 +53,64 @@ int mv_printAll(void* obj, void* arg)
 	mvPtr->runTime;
 	mvPtr->score;
 	
-	printMv(arg); //이건가? 
+	printMv(arg); //arg 즉, mvPtr이 가리키는 것이 printMv에 들어가는것이다. 
 	
-	return 0;
+	return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.   
 }
 
 int mv_printScore(void* obj, void* arg)
 {	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	float* score = (float*)arg;
+	float* score = (float*)arg; //형변환을 해준다. 
 	
-	if (mvPtr == NULL)
+	if (mvPtr == NULL) 
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
-		return 0;
 	}
 	
-	if( (mvPtr->score) >= *score ) //조건문을 채우자. 
+	else if( (mvPtr->score) >= *score ) //입력한 값보다 크거나 같으면 출력한다. 
 	{
-		
-		printMv(mvPtr);
-		return 1;
+		printMv(mvPtr); //mvPtr이 가리키는 값을 출력한다. 
+		return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.   
 	}
 
-	
+	return 0;
 }
 
 int mv_printRunTime(void* obj, void* arg)
 {	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	int* runTime = (int*)arg;
+	int* runTime = (int*)arg;//형변환을 해준다. 
 	
 	if (mvPtr == NULL)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
-		return 0;
 	}
 	
-	if( (mvPtr->runTime) >= *runTime ) //조건문을 채우자. 
+	else if( (mvPtr->runTime) >= *runTime ) // 입력한 값보다 크거나 같으면 출력한다. 
 	{
-		printMv(mvPtr);
-		return 1;
+		printMv(mvPtr); //mvPtr이 가리키는 값을 출력한다. 
+		return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.   
 	}
-	
+	return 0;
 }
 
 int mv_printCountry(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	char* country = (char*)arg;
+	char* country = (char*)arg;//형변환을 해준다. 
 	
 	if (mvPtr == NULL)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
-		return 0;
 	}
 	
-	if( (mvPtr->madeIn) == *country ) //조건문을 채우자. 
+	else if( strcmp((mvPtr->madeIn), country)==0) //문자열을 비교할 때는 strcmp를 사용해야한다. 입력한 값이 같으면 출력한다. 
 	{
-		printMv(mvPtr);
-		return 1;
+		printMv(mvPtr); //mvPtr이 가리키는 값을 출력한다. 
+		return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.
 	}
+	return 0;
 }
 
 

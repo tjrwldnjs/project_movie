@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0)
 	{
 		//2.1 print menu message and get input option
-		printf("\n\n----------------MENU----------------\n");
+		printf("\n----------------MENU----------------\n");
 		printf("1. Print all movies\n");
 		printf("2. Search for specific country movies\n");
 		printf("3. Search for specific runtime movies\n");
@@ -62,7 +62,8 @@ int main(int argc, char *argv[]) {
 				repFunc = mv_printAll;
 				arg = NULL;
 				
-				list_repeatFunc(repFunc, arg, list);
+				cnt = list_repeatFunc(repFunc, arg, list); //몇 개의 영화가 출력되었는지 알아보기 위해서. 
+				printf("\nTotally %d movies are listed",cnt);
 				
 				break;
 				
@@ -72,7 +73,11 @@ int main(int argc, char *argv[]) {
 				printf("Input country : ");
 				scanf("%s", &country); //문자열로 국가받기 
 				printf("----------------------------------------\n");
-				repFunc = mv_printCountry;	
+				
+				repFunc = mv_printCountry;
+				
+				cnt = list_repeatFunc(repFunc, arg, list);
+				printf("\nTotally %d movies are listed",cnt);
 				break;	
 				
 				
@@ -83,6 +88,9 @@ int main(int argc, char *argv[]) {
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printRunTime;
+				
+				cnt = list_repeatFunc(repFunc, arg, list);
+				printf("\nTotally %d movies are listed",cnt);
 			
 				break;
 				
@@ -94,6 +102,9 @@ int main(int argc, char *argv[]) {
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printScore;
+				
+				cnt = list_repeatFunc(repFunc, arg, list);
+				printf("\nTotally %d movies are listed",cnt);
 				break;
 				
 			case 5:
@@ -109,9 +120,7 @@ int main(int argc, char *argv[]) {
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		cnt = list_repeatFunc(repFunc, arg, list);
-		printf("\n Count File");
-		printf("Totally %d movies are listed",cnt);
+		
 		//2.3 print number of movies
 		
 	}
