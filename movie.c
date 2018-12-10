@@ -62,22 +62,50 @@ int mv_printScore(void* obj, void* arg)
 {	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	arg = mvPtr;
-	mvPtr->score;
+	if (mvPtr == NULL)
+	{
+		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
+	}
 	
-	printf("%f",arg);
-	
+	if( /* mvPtr/obj/score 스코어 입력받은 값과 크거나 같으면 출력함.*/) //조건문을 채우자. 
+	{
+		arg = mvPtr;
+		mvPtr->name;
+		mvPtr->madeIn;
+		mvPtr->runTime;
+		mvPtr->score;
+			
+		printMv(arg);	
+	}
+
 	return 0;
 }
 
 int mv_printRunTime(void* obj, void* arg)
 {	
-
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	
+	if (mvPtr == NULL)
+	{
+		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
+	}
+	
+	if()
+	{
+		arg = mvPtr;
+		mvPtr->name;
+		mvPtr->madeIn;
+		mvPtr->runTime;
+		mvPtr->score;
+			
+		printMv(arg);	
+	}
 	return 0;
 }
 
 int mv_printCountry(void* obj, void* arg)
 {
+	
 	return 0;
 }
 

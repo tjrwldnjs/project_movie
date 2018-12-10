@@ -41,7 +41,6 @@ int main(int argc, char *argv[]) {
 	
 	printf("Ready done!");
 	printf("%d items are read\n",(list_len(list)));
-	
 	fclose(fp);	//1.4 FILE close
 	
 	//2. program start
