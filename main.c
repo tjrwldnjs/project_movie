@@ -34,15 +34,8 @@ int main(int argc, char *argv[]) {
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo() //무비인포 불러오기
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
-		list_addTail(mvInfo, list);
-		
-		printf("%s, %s, %d, %f\n", name,country,runTime,score);
-		
-		cnt = list_repeatFunc(repFunc, arg, list);
-		printf("Ready done!");
-		printf("%d items are read\n",cnt);
+		list_addTail(mvInfo, list);	
 	}
-	
 	
 	fclose(fp);	//1.4 FILE close
 	
@@ -50,7 +43,7 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0)
 	{
 		//2.1 print menu message and get input option
-		printf("----------------MENU----------------\n");
+		printf("\n\n----------------MENU----------------\n");
 		printf("1. Print all movies\n");
 		printf("2. Search for specific country movies\n");
 		printf("3. Search for specific runtime movies\n");
@@ -68,17 +61,20 @@ int main(int argc, char *argv[]) {
 				
 				repFunc = mv_printAll;
 				arg = NULL;
+				
+				list_repeatFunc(repFunc, arg, list);
+				
 				break;
 				
 			case 2: //print movies of specific country
-					
-				printf("Input country : ");
-				scanf("%c", &country); //문자열로 국가받기 
-				printf("----------------------------------------\n");
 				
-				repFunc = mv_printCountry;
-				arg = &country; //문자열로 받은거 
-				break;
+				arg = &country; //문자열로 받은거 	
+				printf("Input country : ");
+				scanf("%s", &country); //문자열로 국가받기 
+				printf("----------------------------------------\n");
+				repFunc = mv_printCountry;	
+				break;	
+				
 				
 			case 3: //print movies with long runtime
 				arg = &runTime;
@@ -98,7 +94,6 @@ int main(int argc, char *argv[]) {
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printScore;
-				
 				break;
 				
 			case 5:
@@ -110,10 +105,13 @@ int main(int argc, char *argv[]) {
 			default:
 				printf("wrong command! input again\n");
 				break;
+				
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		list_repeatFunc(repFunc, arg, list);
+		cnt = list_repeatFunc(repFunc, arg, list);
+		printf("\n Count File");
+		printf("Totally %d movies are listed",cnt);
 		//2.3 print number of movies
 		
 	}

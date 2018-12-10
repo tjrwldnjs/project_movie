@@ -66,15 +66,17 @@ int mv_printScore(void* obj, void* arg)
 	if (mvPtr == NULL)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
+		return 0;
 	}
 	
 	if( (mvPtr->score) >= *score ) //조건문을 채우자. 
 	{
 		
-		printMv(mvPtr);	
+		printMv(mvPtr);
+		return 1;
 	}
 
-	return 0;
+	
 }
 
 int mv_printRunTime(void* obj, void* arg)
@@ -85,14 +87,15 @@ int mv_printRunTime(void* obj, void* arg)
 	if (mvPtr == NULL)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
+		return 0;
 	}
 	
 	if( (mvPtr->runTime) >= *runTime ) //조건문을 채우자. 
 	{
-		
-		printMv(mvPtr);	
+		printMv(mvPtr);
+		return 1;
 	}
-	return 0;
+	
 }
 
 int mv_printCountry(void* obj, void* arg)
@@ -103,13 +106,14 @@ int mv_printCountry(void* obj, void* arg)
 	if (mvPtr == NULL)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
+		return 0;
 	}
 	
-	if( (mvPtr->madeIn) = /*문자열비교로 */ *country ) //조건문을 채우자. 
+	if( (mvPtr->madeIn) == *country ) //조건문을 채우자. 
 	{
-		printMv(mvPtr);	
+		printMv(mvPtr);
+		return 1;
 	}
-	return 0;
 }
 
 
