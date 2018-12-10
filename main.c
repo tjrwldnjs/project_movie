@@ -37,10 +37,13 @@ int main(int argc, char *argv[]) {
 		list_addTail(mvInfo, list);
 		
 		printf("%s, %s, %d, %f\n", name,country,runTime,score);
+		
+		cnt = list_repeatFunc(repFunc, arg, list);
+		printf("Ready done!");
+		printf("%d items are read\n",cnt);
 	}
 	
-	printf("Ready done!");
-	printf("%d items are read\n",(list_len(list)));
+	
 	fclose(fp);	//1.4 FILE close
 	
 	//2. program start
@@ -70,7 +73,7 @@ int main(int argc, char *argv[]) {
 			case 2: //print movies of specific country
 					
 				printf("Input country : ");
-				scanf("%c\n", &country); //문자열로 국가받기 
+				scanf("%c", &country); //문자열로 국가받기 
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printCountry;
@@ -78,23 +81,24 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			case 3: //print movies with long runtime
-				
+				arg = &runTime;
 				printf("Input runTime : ");
-				scanf("%d\n", &runTime); 
+				scanf("%d", &runTime); 
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printRunTime;
-				arg = &runTime;
+			
 				break;
 				
 			case 4: //print movies with high score
-			
+				
+				arg = &score;
 				printf("Input score : ");
-				scanf("%f\n", &score); 
+				scanf("%f", &score); 
 				printf("----------------------------------------\n");
 				
 				repFunc = mv_printScore;
-				arg = &score;
+				
 				break;
 				
 			case 5:
