@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
 				arg = NULL;
 				
 				cnt = list_repeatFunc(repFunc, arg, list); //몇 개의 영화가 출력되었는지 알아보기 위해서. 
-				printf("\nTotally %d movies are listed",cnt);
+				printf("\nTotally %d movies are listed\n",cnt);
 				
 				break;
 				
@@ -76,8 +76,8 @@ int main(int argc, char *argv[]) {
 				
 				repFunc = mv_printCountry;
 				
-				cnt = list_repeatFunc(repFunc, arg, list);
-				printf("\nTotally %d movies are listed",cnt);
+				cnt = list_repeatFunc(repFunc, arg, list);//몇 개의 영화가 출력되었는지 알아보기 위해서. 
+				printf("\nTotally %d movies are listed\n",cnt);
 				break;	
 				
 				
@@ -89,8 +89,8 @@ int main(int argc, char *argv[]) {
 				
 				repFunc = mv_printRunTime;
 				
-				cnt = list_repeatFunc(repFunc, arg, list);
-				printf("\nTotally %d movies are listed",cnt);
+				cnt = list_repeatFunc(repFunc, arg, list);//몇 개의 영화가 출력되었는지 알아보기 위해서. 
+				printf("\nTotally %d movies are listed\n",cnt);
 			
 				break;
 				
@@ -103,8 +103,8 @@ int main(int argc, char *argv[]) {
 				
 				repFunc = mv_printScore;
 				
-				cnt = list_repeatFunc(repFunc, arg, list);
-				printf("\nTotally %d movies are listed",cnt);
+				cnt = list_repeatFunc(repFunc, arg, list);//몇 개의 영화가 출력되었는지 알아보기 위해서. 
+				printf("\nTotally %d movies are listed\n",cnt);
 				break;
 				
 			case 5:

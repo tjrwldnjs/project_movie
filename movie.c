@@ -37,6 +37,7 @@ void printMv(void* obj)
 	
 	printf("Name : %s (%s)\n", mvPtr->name, mvPtr->madeIn);
 	printf("running time : %i, score : %f\n", mvPtr->runTime, mvPtr->score);
+	printf("----------------------------------------\n");
 	
 	return;
 }
@@ -71,6 +72,7 @@ int mv_printScore(void* obj, void* arg)
 	else if( (mvPtr->score) >= *score ) //입력한 값보다 크거나 같으면 출력한다. 
 	{
 		printMv(mvPtr); //mvPtr이 가리키는 값을 출력한다. 
+		printf("----------------------------------------\n");
 		return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.   
 	}
 
@@ -90,6 +92,7 @@ int mv_printRunTime(void* obj, void* arg)
 	else if( (mvPtr->runTime) >= *runTime ) // 입력한 값보다 크거나 같으면 출력한다. 
 	{
 		printMv(mvPtr); //mvPtr이 가리키는 값을 출력한다. 
+		printf("----------------------------------------\n");
 		return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.   
 	}
 	return 0;
@@ -108,6 +111,7 @@ int mv_printCountry(void* obj, void* arg)
 	else if( strcmp((mvPtr->madeIn), country)==0) //문자열을 비교할 때는 strcmp를 사용해야한다. 입력한 값이 같으면 출력한다. 
 	{
 		printMv(mvPtr); //mvPtr이 가리키는 값을 출력한다. 
+		printf("----------------------------------------\n");
 		return 1; //1을 리턴해줌으로써 cnt가 누적된다. 따라서 출력된 영화의 개수를 말함.
 	}
 	return 0;
